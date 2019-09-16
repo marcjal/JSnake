@@ -111,6 +111,7 @@ function runGame() {
 if(movingRight)
 
 (function moveRight() {
+ console.log('moveRight')
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
@@ -132,6 +133,7 @@ else if(movingLeft)
 
 (function moveLeft() {
  console.log('moveLeft')
+ console.log('moveLeft')
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
   setTimeout(()=>{
@@ -152,6 +154,7 @@ else if(movingLeft)
 else if(movingDown)
 
 (function moveDown() {
+ console.log('moveDown')
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
@@ -172,6 +175,7 @@ else if(movingDown)
 else if(movingUp)
 
 (function moveUp() {
+ console.log('moveUp')
  document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition>0) {
   setTimeout(()=>{
