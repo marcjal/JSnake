@@ -115,13 +115,11 @@ if(movingRight)
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
-    if(!movingRight) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    runGame()
   },1000)
  } else {
   setTimeout(()=>{
-    if(!movingRight) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
    runGame()
@@ -137,13 +135,11 @@ else if(movingLeft)
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
   setTimeout(()=>{
-    if(!movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    runGame()
   },1000)
  } else {
   setTimeout(()=>{
-    if(!movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=8
    runGame()
@@ -158,13 +154,11 @@ else if(movingDown)
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
-   if(!movingDown) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    runGame()
   },1000)
  } else {
   setTimeout(()=>{
-   if(!movingDown) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
    runGame()
@@ -179,13 +173,11 @@ else if(movingUp)
  document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition>0) {
   setTimeout(()=>{
-   if(!movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    runGame()
   },1000)
  } else {
   setTimeout(()=>{
-   if(!movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=8
    runGame()
