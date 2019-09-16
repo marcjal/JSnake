@@ -136,6 +136,7 @@ if(movingRight) {
  else {
   snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
+  document.getElementById('score').innerHTML=+document.getElementById('score').innerHTML+1
  positionFood()
 } else {
  let tail=snakePositions.pop()
