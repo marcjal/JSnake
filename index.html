@@ -9,10 +9,10 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 #gameArea { width:81.6vh;height:81.6vh; }
 .gameCol { height: 10.0vh; float: left; width: 10.0vh; background-color: #eee; border: 0.1vh solid #eee; }
 
-#up { float: top; }
+#up { float: center; }
 #left { float: left; }
 #right { float: right; }
-#down { float: bottom; }
+#down { float: center; }
 
 #gameButtons {width:15vh;height:15vh;}
 
@@ -107,10 +107,16 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 
 <div id="gameButtons">
 
-<button id='up'>^</button>
+<div id="topContainer"><button id='up'>^</button></div>
+
+<div id="middleContainer">
 <button id='left'>&lt;</button>
 <button id='right'>&gt;</button>
+</div>
+
+<div id="bottomContainer">
 <button id='down'>v</button>
+</div>
 
 </div>
 
