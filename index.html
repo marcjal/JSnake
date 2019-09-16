@@ -99,27 +99,34 @@ body, #gameArea { width:816px;height;816px; }
 
 <script type="text/javascript">
 
-let horizontalPosition=-1
-let verticalPosition=-1
+//let horizontalPosition=-1
+//let verticalPosition=-1
+
+let row=-1
+let column=-1
+
 let movingRight=false
 let movingDown=false
 let movingLeft=false
 let movingUp=false
 
-let snakePositions=[ [1,0],[0,0] ] // [row, col]
+//let snakePositions=[ [1,0],[0,0] ] // [row, col]
+let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
 function setCell() {
- document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ //document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ row+'c'+ column).style['border']='1px solid #ddd'
 }
 
 function resetCell() {
- document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+ //document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+ document.getElementById('r'+row+'c'+column).style['border']='1px solid #eee'
 }
 
 function drawInitial() {
  for(let i=0; i<snakePositions.length;i++) {
-  horizontalPosition=snakePositions[i][0]
-  verticalPosition=snakePositions[i][1]
+  row=snakePositions[i][0]
+  column=snakePositions[i][1]
   setCell()
  }
 }
@@ -131,31 +138,31 @@ setTimeout(()=>{
 let head=snakePositions[0]
 
 if(movingRight) {
- horizontalPosition=head[0]+1
- verticalPosition=head[1]
- if(horizontalPosition>7) horizontalPosition=0
+ column=head[0]+1
+ row=head[1]
+ if(column>7) column=0
 } else if(movingDown) {
- horizontalPosition=head[0]
- verticalPosition=head[1]+1
- if(verticalPosition>7) verticalPosition=0 
+ column=head[0]
+ row=head[1]+1
+ if(row>7) row=0 
 } else if(movingLeft) {
- horizontalPosition=head[0]-1
- verticalPosition=head[1]
- if(horizontalPosition<0) horizontalPosition=7
+ column=head[0]-1
+ row=head[1]
+ if(column<0) column=7
 } else if(movingUp) {
- horizontalPosition=head[0]
- verticalPosition=head[1]-1
- if(verticalPosition<0) verticalPosition=7
+ column=head[0]
+ row=head[1]-1
+ if(row<0) row=7
 }
 
  setCell()
- snakePositions.unshift([horizontalPosition,verticalPosition])
+ snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
  positionFood()
 } else {
  let tail=snakePositions.pop()
- horizontalPosition=tail[0]
- verticalPosition=tail[1]
+ row=tail[0]
+ column=tail[1]
  resetCell()
 }
 
@@ -208,13 +215,13 @@ let foodPosition=[]
 function positionFood() {
  foodPosition[0]=~~(Math.random()*8)
  foodPosition[1]=~~(Math.random()*8)
- if(!snakePosition.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1]))
-  document.getElementById('r'+ foodPosition[1]+'c'+ foodPosition[0]).style['border']='1px solid #fff'
- //else
-   //positionFood()
+ if(!snakePositions.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1]))
+  document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='1px solid #fff'
+ else
+   positionFood()
 }
 
-verticalPosition=0
+row=0
 movingRight=true
 drawInitial()
 positionFood()
