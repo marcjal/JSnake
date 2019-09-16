@@ -149,6 +149,7 @@ document.onkeydown = key => {
  if(key.code=='ArrowDown') {
   movingHorizontally=false
   movingVertically=true
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   moveVertically()
  }
 }
