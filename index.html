@@ -101,25 +101,25 @@ body, #gameArea { height: 100vh; }
 
 let horizontalPosition=-1
 let verticalPosition=-1
-let movingHorizontally=false
+let movingRight=false
 let movingVertically=false
 let movingLeft=false
 let movingUp=false
 
-function moveHorizontally() {
+function moveRight() {
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
     if(movingVertically||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   moveHorizontally()
+   moveRight()
   },1000)
  } else {
   setTimeout(()=>{
     if(movingVertically||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
-   moveHorizontally()
+   moveRight()
   },1000)
  }
 }
@@ -147,13 +147,13 @@ function moveVertically() {
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
-   if(movingHorizontally||movingLeft) return
+   if(movingRight||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveVertically()
   },1000)
  } else {
   setTimeout(()=>{
-   if(movingHorizontally||movingLeft) return
+   if(movingRight||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
    moveVertically()
@@ -165,13 +165,13 @@ function moveUp() {
  document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition>0) {
   setTimeout(()=>{
-   if(movingHorizontally||movingLeft) return
+   if(movingRight||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveUp()
   },1000)
  } else {
   setTimeout(()=>{
-   if(movingHorizontally||movingLeft) return
+   if(movingRight||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=8
    moveUp()
@@ -181,31 +181,31 @@ function moveUp() {
 
 //moveVertically()
 verticalPosition=0
-movingHorizontally=true
-moveHorizontally()
+movingRight=true
+moveRight()
 
 document.onkeydown = key => {
  if(key.code=='ArrowDown' && !movingVertically && !movingUp) {
-  movingHorizontally=movingLeft=movingUp=false
+  movingRight=movingLeft=movingUp=false
   movingVertically=true
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveVertically()
  }
- if(key.code=='ArrowRight' && !movingHorizontally && !movingLeft) {
-  movingHorizontally=true
+ if(key.code=='ArrowRight' && !movingRight && !movingLeft) {
+  movingRight=true
   movingVertically=movingLeft=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  moveHorizontally()
+  moveRight()
  }
- if(key.code=='ArrowLeft' && !movingHorizontally && !movingLeft) {
+ if(key.code=='ArrowLeft' && !movingRight && !movingLeft) {
   movingLeft=true
-  movingVertically=movingHorizontally=movingUp=false
+  movingVertically=movingRight=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveLeft()
  }
  if(key.code=='ArrowUp' && !movingVertically && !movingUp) {
   movingUp=true
-  movingVertically=movingHorizontally=movingLeft=false
+  movingVertically=movingRight=movingLeft=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveUp()
  }
