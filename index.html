@@ -128,6 +128,7 @@ function moveHorizontally() {
 }
 
 function moveLeft() {
+ console.log('moveLeft')
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['background-color']='#eee'
  document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
