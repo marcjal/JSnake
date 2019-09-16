@@ -208,7 +208,7 @@ let foodPosition=[]
 function positionFood() {
  foodPosition[0]=~~(Math.random()*8)
  foodPosition[1]=~~(Math.random()*8)
- //if(!snakePosition.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1]))
+ if(!snakePosition.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1]))
   document.getElementById('r'+ foodPosition[1]+'c'+ foodPosition[0]).style['border']='1px solid #fff'
  //else
    //positionFood()
