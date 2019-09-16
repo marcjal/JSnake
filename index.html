@@ -122,7 +122,7 @@ if(movingRight) {
  console.log('movingRight')
  let head=snakePositions[0]
  horizontalPosition=head[0]
- verticalPosition=head[0]+1
+ verticalPosition=head[1]+1
  snakePositions.unshift([horizontalPosition,verticalPosition])
  setCell()
  setTimeout(()=>{
