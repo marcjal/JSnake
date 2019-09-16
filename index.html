@@ -241,6 +241,23 @@ document.onkeydown = key => {
  }
 }
 
+document.getElementById('left').onClick=()=>{
+  movingRight=movingDown=movingUp=false
+  movingLeft=true
+}
+document.getElementById('right').onClick=()=>{
+  movingDown=movingLeft=movingUp=false
+  movingRight=true
+}
+document.getElementById('up').onClick=()=>{
+  movingRight=movingLeft=movingDown=false
+  movingUp=true
+}
+document.getElementById('down').onClick=()=>{
+  movingRight=movingLeft=movingUp=false
+  movingDown=true
+}
+
 </script>
 
 </body>
