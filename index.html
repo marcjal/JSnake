@@ -138,20 +138,20 @@ setTimeout(()=>{
 let head=snakePositions[0]
 
 if(movingRight) {
- column=head[0]+1
- row=head[1]
+ column=head[1]+1
+ row=head[0]
  if(column>7) column=0
 } else if(movingDown) {
- column=head[0]
- row=head[1]+1
+ column=head[1]
+ row=head[0]+1
  if(row>7) row=0 
 } else if(movingLeft) {
- column=head[0]-1
- row=head[1]
+ column=head[1]-1
+ row=head[0]
  if(column<0) column=7
 } else if(movingUp) {
- column=head[0]
- row=head[1]-1
+ column=head[1]
+ row=head[0]-1
  if(row<0) row=7
 }
 
