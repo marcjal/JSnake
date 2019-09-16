@@ -106,7 +106,7 @@ let movingVertically=false
 
 function moveHorizontally() {
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#ddd'
- document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
     if(movingVertically) return
@@ -127,7 +127,7 @@ function moveHorizontally() {
 
 function moveVertically() {
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#ddd'
- document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
