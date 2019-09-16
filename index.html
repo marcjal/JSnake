@@ -102,7 +102,7 @@ body, #gameArea { height: 100vh; }
 let horizontalPosition=-1
 let verticalPosition=-1
 let movingRight=false
-let movingVertically=false
+let movingDown=false
 let movingLeft=false
 let movingUp=false
 
@@ -110,13 +110,13 @@ function moveRight() {
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
-    if(movingVertically||movingUp) return
+    if(movingDown||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveRight()
   },1000)
  } else {
   setTimeout(()=>{
-    if(movingVertically||movingUp) return
+    if(movingDown||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
    moveRight()
@@ -129,13 +129,13 @@ function moveLeft() {
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
   setTimeout(()=>{
-    if(movingVertically||movingUp) return
+    if(movingDown||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveLeft()
   },1000)
  } else {
   setTimeout(()=>{
-    if(movingVertically||movingUp) return
+    if(movingDown||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=8
    moveLeft()
@@ -143,20 +143,20 @@ function moveLeft() {
  }
 }
 
-function moveVertically() {
+function moveDown() {
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
    if(movingRight||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   moveVertically()
+   moveDown()
   },1000)
  } else {
   setTimeout(()=>{
    if(movingRight||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
-   moveVertically()
+   moveDown()
   },1000)
  }
 }
@@ -179,33 +179,33 @@ function moveUp() {
  }
 }
 
-//moveVertically()
+//moveDown()
 verticalPosition=0
 movingRight=true
 moveRight()
 
 document.onkeydown = key => {
- if(key.code=='ArrowDown' && !movingVertically && !movingUp) {
+ if(key.code=='ArrowDown' && !movingDown && !movingUp) {
   movingRight=movingLeft=movingUp=false
-  movingVertically=true
+  movingDown=true
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  moveVertically()
+  moveDown()
  }
  if(key.code=='ArrowRight' && !movingRight && !movingLeft) {
   movingRight=true
-  movingVertically=movingLeft=movingUp=false
+  movingDown=movingLeft=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveRight()
  }
  if(key.code=='ArrowLeft' && !movingRight && !movingLeft) {
   movingLeft=true
-  movingVertically=movingRight=movingUp=false
+  movingDown=movingRight=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveLeft()
  }
- if(key.code=='ArrowUp' && !movingVertically && !movingUp) {
+ if(key.code=='ArrowUp' && !movingDown && !movingUp) {
   movingUp=true
-  movingVertically=movingRight=movingLeft=false
+  movingDown=movingRight=movingLeft=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveUp()
  }
