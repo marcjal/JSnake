@@ -150,12 +150,16 @@ if(movingRight) {
 
  setCell()
  snakePositions.unshift([horizontalPosition,verticalPosition])
-
+if(head.toString()==foodPosition.toString()) {
+ positionFood()
+} else {
  let tail=snakePositions.pop()
  horizontalPosition=tail[0]
  verticalPosition=tail[1]
  resetCell()
- runGame()
+}
+
+runGame()
 
 },1000)
 
@@ -199,10 +203,12 @@ if(movingRight) {
 
 } // runGame
 
+let foodPosition
+
 function positionFood() {
- let horizontal=~~(Math.random()*8)
- let vertical=~~(Math.random()*8)
- document.getElementById('r'+ vertical+'c'+ horizontal).style['border']='1px solid #fff'
+ foodPosition[0]=~~(Math.random()*8)
+ foodPosition[1]=~~(Math.random()*8)
+ document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='1px solid #fff'
 }
 
 verticalPosition=0
