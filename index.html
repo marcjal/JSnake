@@ -150,8 +150,14 @@ if(movingRight) {
 }
 
  setCell()
- if(snakePositions.some(e=>e[0]==row&&e[1]==column))
-  snakePositions=[[row,column]]
+ if(snakePositions.some(e=>e[0]==row&&e[1]==column)) {
+  for(let i=0;i<snakePositions.length;i++) {
+   row=snakePositions[i][0]
+   column=snakePositions[i][1]
+   resetCell()
+  }
+  snakePositions=[ [0,1],[0,0] ] // [row, col]
+ }
  else
   snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
