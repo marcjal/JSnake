@@ -116,7 +116,7 @@ if(movingRight) {
  setCell()
  if(snakePositions.some(e=>e[0]==row&&e[1]==column)) {
   document.getElementById('gameOver').style.display='block'
-  setTimeout(()=>document.getElementById('gameOver').style.display='none',1000)
+  setTimeout(()=>document.getElementById('gameOver').style.display='none',2000)
   for(let i=0;i<snakePositions.length;i++) {
    row=snakePositions[i][0]
    column=snakePositions[i][1]
