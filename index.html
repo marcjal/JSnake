@@ -101,19 +101,23 @@ body, #gameArea { height: 100vh; }
 
 <script type="text/javascript">
 
-let horizontalPosition=0
+let horizontalPosition=-1
 let verticalPosition=-1
 
-//document.getElementById('r0c'+horizontalPosition).style['background-color']='#00f'
-
 function moveHorizontally() {
- document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
- document.getElementById('r'+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#ddd'
- horizontalPosition<7||(horizontalPosition=0)
- //if(horizontalPosition<7)
+ document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#ddd'
+ if(horizontalPosition<7) {
   setTimeout(()=>{
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    moveHorizontally()
-  },1000)  
+  },1000)
+ } else {
+  setTimeout(()=>{
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+   horizontalPosition=-1
+   moveHorizontally()
+  },1000)
+ }
 }
 
 function moveVertically() {
@@ -132,7 +136,8 @@ function moveVertically() {
  }
 }
 
-moveVertically()
+//moveVertically()
+moveHorizontally()
 
 </script>
 
