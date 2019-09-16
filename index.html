@@ -111,18 +111,39 @@ function moveHorizontally() {
  document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
-    if(movingVertically) return
+    if(movingVertically||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveHorizontally()
   },1000)
  } else {
   setTimeout(()=>{
-    if(movingVertically) return
+    if(movingVertically||movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
    moveHorizontally()
+  },1000)
+ }
+}
+
+function moveLeft() {
+ document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['background-color']='#eee'
+ document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ if(horizontalPosition>0) {
+  setTimeout(()=>{
+    if(movingVertically||movingUp) return
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   moveLeft()
+  },1000)
+ } else {
+  setTimeout(()=>{
+    if(movingVertically||movingUp) return
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   horizontalPosition=8
+   moveLeft()
   },1000)
  }
 }
@@ -132,14 +153,14 @@ function moveVertically() {
  document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
-   if(movingHorizontally) return
+   if(movingHorizontally||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveVertically()
   },1000)
  } else {
   setTimeout(()=>{
-   if(movingHorizontally) return
+   if(movingHorizontally||movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
@@ -155,7 +176,7 @@ moveHorizontally()
 
 document.onkeydown = key => {
  if(key.code=='ArrowDown' && !movingVertically && !movingUp) {
-  movingHorizontally=false
+  movingHorizontally=movingLeft=movingUp=false
   movingVertically=true
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
@@ -163,10 +184,24 @@ document.onkeydown = key => {
  }
  if(key.code=='ArrowRight' && !movingHorizontally && !movingLeft) {
   movingHorizontally=true
-  movingVertically=false
+  movingVertically=movingLeft=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveHorizontally()
+ }
+ if(key.code=='ArrowLeft' && !movingHorizontally && !movingLeft) {
+  movingLeft=true
+  movingVertically=movingHorizontally=movingUp=false
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  //moveLeft()
+ }
+ if(key.code=='ArrowUp' && !movingVertically && !movingUp) {
+  movingUp=true
+  movingVertically=movingHorizontally=movingLeft=false
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  //moveUp()
  }
 }
 
