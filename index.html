@@ -150,9 +150,9 @@ if(movingRight) {
 }
 
  setCell()
- /*if(!snakePositions.some(e=>e[0]==row[0]&&e[1]==row[1]))
+ if(snakePositions.some(e=>e[0]==row[0]&&e[1]==row[1]))
   snakePositions=[[row,column]]
- else*/
+ else
   snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
  positionFood()
