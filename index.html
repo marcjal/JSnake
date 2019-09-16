@@ -170,6 +170,27 @@ function moveVertically() {
  }
 }
 
+function moveUp() {
+ document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['background-color']='#eee'
+ document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ if(verticalPosition>0) {
+  setTimeout(()=>{
+   if(movingHorizontally||movingLeft) return
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   moveUp()
+  },1000)
+ } else {
+  setTimeout(()=>{
+   if(movingHorizontally||movingLeft) return
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   verticalPosition=-1
+   moveUp()
+  },1000)
+ }
+}
+
 //moveVertically()
 verticalPosition=0
 movingHorizontally=true
@@ -202,7 +223,7 @@ document.onkeydown = key => {
   movingVertically=movingHorizontally=movingLeft=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  //moveUp()
+  moveUp()
  }
 }
 
