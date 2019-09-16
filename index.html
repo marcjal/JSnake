@@ -220,6 +220,7 @@ document.onkeydown = key => {
  }
  if(key.code=='ArrowUp' && !movingVertically && !movingUp) {
   if(horizontalPosition==-1) horizontalPosition=0
+  if(verticalPosition==-1) verticalPosition=0
   movingUp=true
   movingVertically=movingHorizontally=movingLeft=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
