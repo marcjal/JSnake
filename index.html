@@ -157,6 +157,13 @@ document.onkeydown = key => {
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveVertically()
  }
+ if(key.code=='ArrowRight') {
+  movingHorizontally=true
+  movingVertically=false
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  moveHorizontally()
+ }
 }
 
 </script>
