@@ -109,7 +109,8 @@ document.getElementById('r0c'+horizontalPosition).style['background-color']='#00
 function moveHorizontally() {
  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
  document.getElementById('r'+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#00f'
- if(horizontalPosition<7)
+ horizontalPosition<7||horizontalPosition=0
+ //if(horizontalPosition<7)
   setTimeout(()=>{
    moveHorizontally()
   },1000)  
@@ -118,7 +119,8 @@ function moveHorizontally() {
 function moveVertically() {
  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#00f'
- if(verticalPosition<7)
+ verticalPosition<7||verticalPosition=0
+ //if(verticalPosition<7)
   setTimeout(()=>{
    moveVertically()
   },1000)  
