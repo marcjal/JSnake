@@ -134,11 +134,18 @@ if(movingRight) {
  horizontalPosition=head[0]+1
  verticalPosition=head[1]
  if(horizontalPosition>7) horizontalPosition=0
-
 } else if(movingDown) {
  horizontalPosition=head[0]
  verticalPosition=head[1]+1
  if(verticalPosition>7) verticalPosition=0 
+} else if(movingLeft) {
+ horizontalPosition=head[0]-1
+ verticalPosition=head[1]
+ if(horizontalPosition<0) horizontalPosition=7
+} else if(movingUp) {
+ horizontalPosition=head[0]
+ verticalPosition=head[1]-1
+ if(verticalPosition<0) verticalPosition=7
 }
 
  setCell()
