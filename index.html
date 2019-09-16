@@ -161,7 +161,7 @@ if(movingRight) {
   movingRight=true
   movingDown=movingLeft=movingUp=false
  }
- else
+ else {
   snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
  positionFood()
@@ -170,6 +170,7 @@ if(head.toString()==foodPosition.toString()) {
  row=tail[0]
  column=tail[1]
  resetCell()
+}
 }
 
 runGame()
