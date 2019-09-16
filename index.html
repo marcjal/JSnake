@@ -106,37 +106,48 @@ let movingDown=false
 let movingLeft=false
 let movingUp=false
 
+function resetCell() {
+ document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+}
+
+function setCell() {
+ document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+}
+
 function runGame() {
 
 if(movingRight) {
  console.log('moveRight')
- document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
+ ++horizontalPosition
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   setCell()
    if(horizontalPosition==7) horizontalPosition=-1
    runGame()
   },1000)
 } else if(movingLeft) {
  console.log('moveLeft')
- document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
+ --horizontalPosition
+ resetCell()
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   setCell()
    if(horizontalPosition==0) horizontalPosition=8
    runGame()
   },1000)
 } else if(movingDown) {
  console.log('moveDown')
- document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ ++verticalPosition
+ resetCell()
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   setCell()
    if(verticalPosition==7) verticalPosition=-1
    runGame()
   },1000)
 } else if(movingUp) {
  console.log('moveUp')
- document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ --verticalPosition
+ resetCell()
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   setCell()
    if(verticalPosition==0) verticalPosition=8
    runGame()
   },1000)
