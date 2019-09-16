@@ -12,7 +12,7 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 #gameButtons {width:15vh;height:15vh;}
 
 #topContainer, #bottomContainer, #middleContainer {text-align:center;}
-#right, #gameButtons {float:right}
+/*#right,*/ #gameButtons {float:right}
  
  #turnOnColor { background: #f00; }
 
@@ -122,6 +122,9 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 </div>
 
 <script type="text/javascript">
+ 
+let snakeColor='#eee'
+let foodColor='#eee'
 
 let row=-1
 let column=-1
@@ -135,6 +138,7 @@ let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
 function setCell() {
  document.getElementById('r'+ row+'c'+ column).style['border']='0.1vh solid #ddd'
+ document.getElementById('r'+ row+'c'+ column).style['background']=snakeColor
 }
 
 function resetCell() {
@@ -210,6 +214,7 @@ function positionFood() {
  foodPosition[1]=~~(Math.random()*8)
  if(!snakePositions.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1]))
   document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='0.1vh solid #fff'
+  document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['background']=foodColor
  else
    positionFood()
 }
@@ -259,6 +264,10 @@ document.getElementById('up').onclick=()=>{
 document.getElementById('down').onclick=()=>{
   movingRight=movingLeft=movingUp=false
   movingDown=true
+}
+document.getElementById('turnOnColor').onclick=()=>{
+  snakeColor='#f00'
+  foodColor='#0f0'
 }
 
 </script>
