@@ -110,13 +110,13 @@ function moveRight() {
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
-    if(movingDown||movingUp) return
+    if(!movingRight) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveRight()
   },1000)
  } else {
   setTimeout(()=>{
-    if(movingDown||movingUp) return
+    if(!movingRight) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
    moveRight()
@@ -129,13 +129,13 @@ function moveLeft() {
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
   setTimeout(()=>{
-    if(movingDown||movingUp) return
+    if(!movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveLeft()
   },1000)
  } else {
   setTimeout(()=>{
-    if(movingDown||movingUp) return
+    if(!movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=8
    moveLeft()
@@ -147,13 +147,13 @@ function moveDown() {
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
-   if(movingRight||movingLeft) return
+   if(!movingDown) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveDown()
   },1000)
  } else {
   setTimeout(()=>{
-   if(movingRight||movingLeft) return
+   if(!movingDown) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
    moveDown()
@@ -165,13 +165,13 @@ function moveUp() {
  document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition>0) {
   setTimeout(()=>{
-   if(movingRight||movingLeft) return
+   if(!movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveUp()
   },1000)
  } else {
   setTimeout(()=>{
-   if(movingRight||movingLeft) return
+   if(!movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=8
    moveUp()
