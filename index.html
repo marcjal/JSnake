@@ -126,18 +126,11 @@ else if(movingLeft)
  console.log('moveLeft')
  console.log('moveLeft')
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
- if(horizontalPosition>0) {
   setTimeout(()=>{
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   if(horizontalPosition==0) horizontalPosition=8
    runGame()
   },1000)
- } else {
-  setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   horizontalPosition=8
-   runGame()
-  },1000)
- }
 })()
 
 else if(movingDown)
@@ -145,18 +138,11 @@ else if(movingDown)
 (function moveDown() {
  console.log('moveDown')
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
- if(verticalPosition<7) {
   setTimeout(()=>{
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   if(verticalPosition==7) verticalPosition=-1
    runGame()
   },1000)
- } else {
-  setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   verticalPosition=-1
-   runGame()
-  },1000)
- }
 })()
 
 else if(movingUp)
@@ -164,18 +150,11 @@ else if(movingUp)
 (function moveUp() {
  console.log('moveUp')
  document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
- if(verticalPosition>0) {
   setTimeout(()=>{
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   if(verticalPosition==0) verticalPosition=8
    runGame()
   },1000)
- } else {
-  setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   verticalPosition=8
-   runGame()
-  },1000)
- }
 })()
 
 } // runGame
