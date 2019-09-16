@@ -126,7 +126,7 @@ function moveVertically() {
  } else {
   setTimeout(()=>{
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
-   verticalPosition=0
+   verticalPosition=-1
    moveVertically()
   },1000)
  }
