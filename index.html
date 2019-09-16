@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JSnake 20:33</title>
+<title>JSnake 20:36</title>
 <style type="text/css">
 
 .gameRow { height: 10.2vh;width:81.6vh; }
@@ -115,6 +115,7 @@ if(movingRight) {
 
  setCell()
  if(snakePositions.some(e=>e[0]==row&&e[1]==column)) {
+  document.getElementById('gameOver').style.display='block'
   for(let i=0;i<snakePositions.length;i++) {
    row=snakePositions[i][0]
    column=snakePositions[i][1]
