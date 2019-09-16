@@ -4,9 +4,13 @@
 <title>JSnake</title>
 <style type="text/css">
 
-.gameRow { height: 102px;width:816px; }
+/*.gameRow { height: 102px;width:816px; }
 body, #gameArea { width:816px;height;816px; }
-.gameCol { height: 100px; float: left; width: 100px; background-color: #eee; border: 1px solid #eee; }
+.gameCol { height: 100px; float: left; width: 100px; background-color: #eee; border: 0.1px solid #eee; }*/
+
+.gameRow { height: 10.2vw;width:81.6vw; }
+body, #gameArea { width:81.6vw;height;81.6vw; }
+.gameCol { height: 10.0vw; float: left; width: 10.0vw; background-color: #eee; border: 0.1vw solid #eee; }
 
 </style>
 </head>
@@ -110,11 +114,11 @@ let movingUp=false
 let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
 function setCell() {
- document.getElementById('r'+ row+'c'+ column).style['border']='1px solid #ddd'
+ document.getElementById('r'+ row+'c'+ column).style['border']='0.1vw solid #ddd'
 }
 
 function resetCell() {
- document.getElementById('r'+row+'c'+column).style['border']='1px solid #eee'
+ document.getElementById('r'+row+'c'+column).style['border']='0.1vw solid #eee'
 }
 
 function drawInitial() {
