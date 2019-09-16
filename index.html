@@ -106,11 +106,11 @@ let movingDown=false
 let movingLeft=false
 let movingUp=false
 
-function resetCell() {
+function setCell() {
  document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
 }
 
-function setCell() {
+function resetCell() {
  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
 }
 
@@ -119,36 +119,36 @@ function runGame() {
 if(movingRight) {
  console.log('moveRight ' + horizontalPosition + '  ' + verticalPosition)
  ++horizontalPosition
- resetCell()
+ setCell()
   setTimeout(()=>{
-   setCell()
+   resetCell()
    if(horizontalPosition==7) horizontalPosition=-1
    runGame()
   },1000)
 } else if(movingLeft) {
  console.log('moveLeft ' + horizontalPosition + '  ' + verticalPosition)
  --horizontalPosition
- resetCell()
+ setCell()
   setTimeout(()=>{
-   setCell()
+   resetCell()
    if(horizontalPosition==0) horizontalPosition=8
    runGame()
   },1000)
 } else if(movingDown) {
  console.log('moveDown ' + horizontalPosition + '  ' + verticalPosition)
  ++verticalPosition
- resetCell()
+ setCell()
   setTimeout(()=>{
-   setCell()
+   resetCell()
    if(verticalPosition==7) verticalPosition=-1
    runGame()
   },1000)
 } else if(movingUp) {
  console.log('moveUp ' + horizontalPosition + '  ' + verticalPosition)
  --verticalPosition
- resetCell()
+ setCell()
   setTimeout(()=>{
-   setCell()
+   resetCell()
    if(verticalPosition==0) verticalPosition=8
    runGame()
   },1000)
