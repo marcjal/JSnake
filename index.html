@@ -119,6 +119,7 @@ function runGame() {
 if(movingRight) {
  console.log('moveRight')
  ++horizontalPosition
+ resetCell()
   setTimeout(()=>{
    setCell()
    if(horizontalPosition==7) horizontalPosition=-1
