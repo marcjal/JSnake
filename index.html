@@ -128,9 +128,9 @@ function runGame() {
 
 setTimeout(()=>{
  let head=snakePositions[0]
- horizontalPosition=head[0]
- verticalPosition=head[1]+1
- if(verticalPosition>7) verticalPosition=0
+ horizontalPosition=head[0]+1
+ verticalPosition=head[1]
+ if(horizontalPosition>7) horizontalPosition=0
  setCell()
  snakePositions.unshift([horizontalPosition,verticalPosition])
 
