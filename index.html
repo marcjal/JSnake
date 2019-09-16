@@ -7,8 +7,8 @@
 /*.gameCol { border: 1px solid #000; background: #fff; }*/
 .gameRow { height: 10vh; }
 body, #gameArea { height: 100vh; }
-.gameCol { height: 10vh; float: left; width: 10vh; background: #0f0; }
-.snakeCol { background: #00f; }
+.gameCol { height: 10vh; float: left; width: 10vh; background: #eee; }
+//.snakeCol { background: #00f; }
 
 </style>
 </head>
@@ -107,8 +107,8 @@ let verticalPosition=0
 document.getElementById('r0c'+horizontalPosition).style['background-color']='#00f'
 
 function moveHorizontally() {
- document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
- document.getElementById('r'+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#00f'
+ document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
+ document.getElementById('r'+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#ddd'
  horizontalPosition<7||(horizontalPosition=0)
  //if(horizontalPosition<7)
   setTimeout(()=>{
@@ -117,15 +117,15 @@ function moveHorizontally() {
 }
 
 function moveVertically() {
- document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#00f'
+ document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    moveVertically()
   },1000)
  } else {
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    verticalPosition=0
    moveVertically()
   },1000)
