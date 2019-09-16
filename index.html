@@ -8,9 +8,9 @@
 body, #gameArea { width:816px;height;816px; }
 .gameCol { height: 100px; float: left; width: 100px; background-color: #eee; border: 0.1px solid #eee; }*/
 
-.gameRow { height: 10.2vh;width:81.6vh; }
-body, #gameArea { width:81.6vh;height;81.6vh; }
-.gameCol { height: 10.0vh; float: left; width: 10.0vh; background-color: #eee; border: 0.1vh solid #eee; }
+.gameRow { height: 10.2%;width:81.6%; }
+body, #gameArea { width:81.6%;height;81.6%; }
+.gameCol { height: 10.0%; float: left; width: 10.0%; background-color: #eee; border: 0.1% solid #eee; }
 
 </style>
 </head>
@@ -114,11 +114,11 @@ let movingUp=false
 let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
 function setCell() {
- document.getElementById('r'+ row+'c'+ column).style['border']='0.1vh solid #ddd'
+ document.getElementById('r'+ row+'c'+ column).style['border']='0.1% solid #ddd'
 }
 
 function resetCell() {
- document.getElementById('r'+row+'c'+column).style['border']='0.1vh solid #eee'
+ document.getElementById('r'+row+'c'+column).style['border']='0.1% solid #eee'
 }
 
 function drawInitial() {
