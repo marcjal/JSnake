@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JSnake 21:07</title>
+<title>JSnake 21:11</title>
 <style type="text/css">
 
 .gameRow { height: 10.2vh;width:81.6vh; }
@@ -127,7 +127,7 @@ if(movingRight) {
  if(snakePositions.some(e=>e[0]==row&&e[1]==column)) {
   document.getElementById('gameOver').style.display='block'
   document.getElementById('highestScore').innerHTML=Math.max(
-   document.getElementById('highestScore'),document.getElementById('score')
+   document.getElementById('highestScore').innerHTML,document.getElementById('score').innerHTML
   )
   document.getElementById('score').innerHTML=0
   document.getElementById('gamesPlayed').innerHTML=+document.getElementById('gamesPlayed').innerHTML+1
