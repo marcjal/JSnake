@@ -210,19 +210,19 @@ let leftKeys=['ArrowLeft', 'h']
 let rightKeys=['ArrowRight', 'l']
 
 document.onkeydown = key => {
- if(downKeys.includes(key.code) && !movingDown && !movingUp) {
+ if(downKeys.includes(key.key) && !movingDown && !movingUp) {
   movingRight=movingLeft=movingUp=false
   movingDown=true
  }
- if(rightKeys.includes(key.code) && !movingRight && !movingLeft) {
+ if(rightKeys.includes(key.key) && !movingRight && !movingLeft) {
   movingRight=true
   movingDown=movingLeft=movingUp=false
  }
- if(leftKeys.includes(key.code) && !movingRight && !movingLeft) {
+ if(leftKeys.includes(key.key) && !movingRight && !movingLeft) {
   movingLeft=true
   movingDown=movingRight=movingUp=false
  }
- if(upKeys.includes(key.code) && !movingDown && !movingUp) {
+ if(upKeys.includes(key.key) && !movingDown && !movingUp) {
   movingUp=true
   movingDown=movingRight=movingLeft=false
  }
