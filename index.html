@@ -185,10 +185,18 @@ let upKeys=['ArrowUp', 'k']
 let leftKeys=['ArrowLeft', 'h']
 let rightKeys=['ArrowRight', 'l']
 
+function setDirection(l,r,u,d) {
+  movingLeft=l
+  movingRight=r
+  movingUp=u
+  movingDown=d
+}
+
 document.onkeydown = key => {
  if(downKeys.includes(key.key) && !movingDown && !movingUp) {
   movingRight=movingLeft=movingUp=false
   movingDown=true
+  //setDirection(,,,true)
  }
  if(rightKeys.includes(key.key) && !movingRight && !movingLeft) {
   movingRight=true
