@@ -6,7 +6,7 @@
 
 .gameRow { height: 10vh; }
 body, #gameArea { height: 100vh; }
-.gameCol { height: 10vh; float: left; width: 10vh; background: #eee; border: 1px solid #f00; }
+.gameCol { height: 10vh; float: left; width: 10vh; background-color: #eee; }
 
 </style>
 </head>
@@ -105,17 +105,17 @@ let movingHorizontally=false
 let movingVertically=false
 
 function moveHorizontally() {
- document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
     if(movingVertically) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    moveHorizontally()
   },1000)
  } else {
   setTimeout(()=>{
     if(movingVertically) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    horizontalPosition=-1
    moveHorizontally()
   },1000)
@@ -123,15 +123,15 @@ function moveHorizontally() {
 }
 
 function moveVertically() {
- document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    moveVertically()
   },1000)
  } else {
   setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    verticalPosition=-1
    moveVertically()
   },1000)
@@ -147,7 +147,7 @@ document.onkeydown = key => {
  if(key.code=='ArrowDown') {
   movingHorizontally=false
   movingVertically=true
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   moveVertically()
  }
 }
