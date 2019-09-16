@@ -197,25 +197,25 @@ document.onkeydown = key => {
  if(key.code=='ArrowDown' && !movingDown && !movingUp) {
   movingRight=movingLeft=movingUp=false
   movingDown=true
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  //document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   //moveDown()
  }
  if(key.code=='ArrowRight' && !movingRight && !movingLeft) {
   movingRight=true
   movingDown=movingLeft=movingUp=false
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  //document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   //moveRight()
  }
  if(key.code=='ArrowLeft' && !movingRight && !movingLeft) {
   movingLeft=true
   movingDown=movingRight=movingUp=false
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  //document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   //moveLeft()
  }
  if(key.code=='ArrowUp' && !movingDown && !movingUp) {
   movingUp=true
   movingDown=movingRight=movingLeft=false
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+  //document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   //moveUp()
  }
 }
