@@ -107,8 +107,8 @@ let verticalPosition=0
 document.getElementById('r0c'+horizontalPosition).style['background-color']='#00f'
 
 function moveHorizontally() {
- document.getElementById('r+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
- document.getElementById('r+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#00f'
+ document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
+ document.getElementById('r'+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#00f'
  if(horizontalPosition<7)
   setTimeout(()=>{
    moveHorizontally()
@@ -116,8 +116,8 @@ function moveHorizontally() {
 }
 
 function moveVertically() {
- document.getElementById('r+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
- document.getElementById('r+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#00f'
+ document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
+ document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#00f'
  if(verticalPosition<7)
   setTimeout(()=>{
    moveVertically()
