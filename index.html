@@ -157,9 +157,16 @@ if(movingRight) {
 
 } // runGame
 
+function positionFood() {
+ let horizontal=~~(Math.random()*8)
+ let vertical=~~(Math.random()*8)
+ document.getElementById('r'+ vertical+'c'+ horizontal).style['border']='1px solid #fff'
+}
+
 verticalPosition=0
 movingRight=true
 runGame()
+positionFood()
 
 document.onkeydown = key => {
  if(key.code=='ArrowDown' && !movingDown && !movingUp) {
