@@ -101,11 +101,21 @@ body, #gameArea { height: 100vh; }
 
 <script type="text/javascript">
 
-document.getElementById('r0c0').style['background-color']='#00f'
+let horizonalPosition=0
+
+document.getElementById('r0c'+horizontalPosition).style['background-color']='#00f'
+
+function moveHorizontally() {
+ document.getElementById('r0c'+horizontalPosition).style['background-color']='#0f0'
+ document.getElementById('r0c'+ ++horizontalPosition).style['background-color']='#00f'
+ if(horizontalPosition<7)
+  setTimeout(()=>{
+   moveHorizontally()
+  },1000)  
+}
 
 setTimeout(()=>{
- document.getElementById('r0c0').style['background-color']='#0f0'
- document.getElementById('r0c1').style['background-color']='#00f'
+ moveHorizontally()
 },1000)
 
 </script>
