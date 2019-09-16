@@ -117,7 +117,7 @@ function setCell() {
 function runGame() {
 
 if(movingRight) {
- console.log('moveRight')
+ console.log('moveRight ' + horizontalPosition + '  ' + verticalPosition)
  ++horizontalPosition
  resetCell()
   setTimeout(()=>{
@@ -126,7 +126,7 @@ if(movingRight) {
    runGame()
   },1000)
 } else if(movingLeft) {
- console.log('moveLeft')
+ console.log('moveLeft ' + horizontalPosition + '  ' + verticalPosition)
  --horizontalPosition
  resetCell()
   setTimeout(()=>{
@@ -135,7 +135,7 @@ if(movingRight) {
    runGame()
   },1000)
 } else if(movingDown) {
- console.log('moveDown')
+ console.log('moveDown ' + horizontalPosition + '  ' + verticalPosition)
  ++verticalPosition
  resetCell()
   setTimeout(()=>{
@@ -144,7 +144,7 @@ if(movingRight) {
    runGame()
   },1000)
 } else if(movingUp) {
- console.log('moveUp')
+ console.log('moveUp ' + horizontalPosition + '  ' + verticalPosition)
  --verticalPosition
  resetCell()
   setTimeout(()=>{
