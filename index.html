@@ -127,11 +127,12 @@ if(movingRight) {
   },1000)
 } else if(movingLeft) {
  console.log('moveLeft ' + horizontalPosition + '  ' + verticalPosition)
+ if(horizontalPosition==0) horizontalPosition=8
  --horizontalPosition
  setCell()
   setTimeout(()=>{
    resetCell()
-   if(horizontalPosition==0) horizontalPosition=8
+   
    runGame()
   },1000)
 } else if(movingDown) {
