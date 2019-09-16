@@ -113,18 +113,11 @@ if(movingRight)
 (function moveRight() {
  console.log('moveRight')
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
- if(horizontalPosition<7) {
   setTimeout(()=>{
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
+   if(horizontalPosition==7) horizontalPosition=-1
    runGame()
   },1000)
- } else {
-  setTimeout(()=>{
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   horizontalPosition=-1
-   runGame()
-  },1000)
- }
 })()
 
 else if(movingLeft)
