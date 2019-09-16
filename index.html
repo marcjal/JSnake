@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>JSnake 20:39</title>
+<title>JSnake 20:44</title>
 <style type="text/css">
 
 .gameRow { height: 10.2vh;width:81.6vh; }
@@ -39,6 +39,10 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
  <div id="gameOver">
   <h1>Game over</h1>
  </div>
+ 
+  <div id="scoreContainer">
+   <h2>Score: <span id="score"></span></h1>
+ </div>
 
 <div id="gameButtons">
 
@@ -57,6 +61,8 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 </div>
 
 <script type="text/javascript">
+ 
+ document.getElementById('score')=0
  
 let snakeColor='#eee'
 let foodColor='#eee'
