@@ -195,7 +195,7 @@ document.onkeydown = key => {
   movingVertically=movingHorizontally=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  //moveLeft()
+  moveLeft()
  }
  if(key.code=='ArrowUp' && !movingVertically && !movingUp) {
   movingUp=true
