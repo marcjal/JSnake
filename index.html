@@ -107,19 +107,16 @@ let movingLeft=false
 let movingUp=false
 
 function moveHorizontally() {
- document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#eee'
- document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
     if(movingVertically||movingUp) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveHorizontally()
   },1000)
  } else {
   setTimeout(()=>{
     if(movingVertically||movingUp) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
    moveHorizontally()
@@ -129,19 +126,16 @@ function moveHorizontally() {
 
 function moveLeft() {
  console.log('moveLeft')
- document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['background-color']='#eee'
- document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
   setTimeout(()=>{
     if(movingVertically||movingUp) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveLeft()
   },1000)
  } else {
   setTimeout(()=>{
     if(movingVertically||movingUp) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=8
    moveLeft()
@@ -150,19 +144,16 @@ function moveLeft() {
 }
 
 function moveVertically() {
- document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#eee'
- document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
    if(movingHorizontally||movingLeft) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveVertically()
   },1000)
  } else {
   setTimeout(()=>{
    if(movingHorizontally||movingLeft) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
    moveVertically()
@@ -171,19 +162,16 @@ function moveVertically() {
 }
 
 function moveUp() {
- document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['background-color']='#eee'
- document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
+ document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition>0) {
   setTimeout(()=>{
    if(movingHorizontally||movingLeft) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    moveUp()
   },1000)
  } else {
   setTimeout(()=>{
    if(movingHorizontally||movingLeft) return
-   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=8
    moveUp()
@@ -200,28 +188,24 @@ document.onkeydown = key => {
  if(key.code=='ArrowDown' && !movingVertically && !movingUp) {
   movingHorizontally=movingLeft=movingUp=false
   movingVertically=true
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveVertically()
  }
  if(key.code=='ArrowRight' && !movingHorizontally && !movingLeft) {
   movingHorizontally=true
   movingVertically=movingLeft=movingUp=false
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveHorizontally()
  }
  if(key.code=='ArrowLeft' && !movingHorizontally && !movingLeft) {
   movingLeft=true
   movingVertically=movingHorizontally=movingUp=false
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveLeft()
  }
  if(key.code=='ArrowUp' && !movingVertically && !movingUp) {
   movingUp=true
   movingVertically=movingHorizontally=movingLeft=false
-  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['background-color']='#eee'
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
   moveUp()
  }
