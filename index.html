@@ -106,108 +106,121 @@ let movingDown=false
 let movingLeft=false
 let movingUp=false
 
-function moveRight() {
+function runGame() {
+
+if(movingRight)
+
+(function moveRight() {
  document.getElementById('r'+ verticalPosition+'c'+ ++horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition<7) {
   setTimeout(()=>{
     if(!movingRight) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   moveRight()
+   runGame()
   },1000)
  } else {
   setTimeout(()=>{
     if(!movingRight) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=-1
-   moveRight()
+   runGame()
   },1000)
  }
-}
+})()
 
-function moveLeft() {
+else if(movingLeft)
+
+(function moveLeft() {
  console.log('moveLeft')
  document.getElementById('r'+ verticalPosition+'c'+ --horizontalPosition).style['border']='1px solid #ddd'
  if(horizontalPosition>0) {
   setTimeout(()=>{
     if(!movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   moveLeft()
+   runGame()
   },1000)
  } else {
   setTimeout(()=>{
     if(!movingLeft) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    horizontalPosition=8
-   moveLeft()
+   runGame()
   },1000)
  }
-}
+})()
 
-function moveDown() {
+else if(movingDown)
+
+(function moveDown() {
  document.getElementById('r'+ ++verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition<7) {
   setTimeout(()=>{
    if(!movingDown) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   moveDown()
+   runGame()
   },1000)
  } else {
   setTimeout(()=>{
    if(!movingDown) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=-1
-   moveDown()
+   runGame()
   },1000)
  }
-}
+})()
 
-function moveUp() {
+else if(movingUp)
+
+(function moveUp() {
  document.getElementById('r'+ --verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
  if(verticalPosition>0) {
   setTimeout(()=>{
    if(!movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-   moveUp()
+   runGame()
   },1000)
  } else {
   setTimeout(()=>{
    if(!movingUp) return
    document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
    verticalPosition=8
-   moveUp()
+   runGame()
   },1000)
  }
-}
+})()
+
+} // runGame
 
 //moveDown()
 verticalPosition=0
 movingRight=true
-moveRight()
+runGame()
+//moveRight()
 
 document.onkeydown = key => {
  if(key.code=='ArrowDown' && !movingDown && !movingUp) {
   movingRight=movingLeft=movingUp=false
   movingDown=true
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  moveDown()
+  //moveDown()
  }
  if(key.code=='ArrowRight' && !movingRight && !movingLeft) {
   movingRight=true
   movingDown=movingLeft=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  moveRight()
+  //moveRight()
  }
  if(key.code=='ArrowLeft' && !movingRight && !movingLeft) {
   movingLeft=true
   movingDown=movingRight=movingUp=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  moveLeft()
+  //moveLeft()
  }
  if(key.code=='ArrowUp' && !movingDown && !movingUp) {
   movingUp=true
   movingDown=movingRight=movingLeft=false
   document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
-  moveUp()
+  //moveUp()
  }
 }
 
