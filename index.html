@@ -102,20 +102,31 @@ body, #gameArea { height: 100vh; }
 <script type="text/javascript">
 
 let horizontalPosition=0
+let verticalPosition=0
 
 document.getElementById('r0c'+horizontalPosition).style['background-color']='#00f'
 
 function moveHorizontally() {
- document.getElementById('r0c'+horizontalPosition).style['background-color']='#0f0'
- document.getElementById('r0c'+ ++horizontalPosition).style['background-color']='#00f'
+ document.getElementById('r+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
+ document.getElementById('r+verticalPosition+'c'+ ++horizontalPosition).style['background-color']='#00f'
  if(horizontalPosition<7)
   setTimeout(()=>{
    moveHorizontally()
   },1000)  
 }
 
+function moveVertically() {
+ document.getElementById('r+verticalPosition+'c'+horizontalPosition).style['background-color']='#0f0'
+ document.getElementById('r+ ++verticalPosition+'c'+ horizontalPosition).style['background-color']='#00f'
+ if(verticalPosition<7)
+  setTimeout(()=>{
+   moveVertically()
+  },1000)  
+}
+
 setTimeout(()=>{
- moveHorizontally()
+// moveHorizontally()
+ moveVertically()
 },1000)
 
 </script>
