@@ -106,7 +106,7 @@ let movingDown=false
 let movingLeft=false
 let movingUp=false
 
-let snakePositions=[ [0,0] ] // [row, col]
+let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
 function setCell() {
  document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
@@ -116,24 +116,29 @@ function resetCell() {
  document.getElementById('r'+verticalPosition+'c'+horizontalPosition).style['border']='1px solid #eee'
 }
 
+function drawInitial() {
+ for(let i=0; i<snakePositions.length;i++) {
+  horizontal=snakePositions[i][0]
+  vertical=snakePositions[i][1]
+  setCell()
+ }
+}
+
 function runGame() {
 
-if(movingRight) {
- console.log('movingRight')
+setTimeout(()=>{
  let head=snakePositions[0]
- horizontalPosition=head[0]+1
- verticalPosition=head[1]
- snakePositions.unshift([horizontalPosition,verticalPosition])
+ let horizontalPosition=head[0]
+ let verticalPosition=head[1]+1
+ if(verticalPosition>7) verticalPosition=0
  setCell()
- setTimeout(()=>{
-  let tail=snakePositions.pop()
-  horizontalPosition=tail[0]
-  verticalPosition=tail[1]
-  resetCell()
-  if(snakePositions[0][0]==7) snakePositions[0][0]=-1
-  runGame()
- },1000)
-}
+ snakePositions.unshift([horizontalPosition,verticalPosition])
+
+ let tail=snakePositions.pop()
+ let horizontalPosition=tail[0]
+ let verticalPosition=tail[1]
+ resetCell()
+},1000)
 
 /*if(movingRight) {
  console.log('moveRight ' + horizontalPosition + '  ' + verticalPosition)
@@ -183,6 +188,7 @@ function positionFood() {
 
 verticalPosition=0
 movingRight=true
+drawInitial()
 runGame()
 positionFood()
 
