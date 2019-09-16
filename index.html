@@ -128,15 +128,15 @@ function runGame() {
 
 setTimeout(()=>{
  let head=snakePositions[0]
- let horizontalPosition=head[0]
- let verticalPosition=head[1]+1
+ horizontalPosition=head[0]
+ verticalPosition=head[1]+1
  if(verticalPosition>7) verticalPosition=0
  setCell()
  snakePositions.unshift([horizontalPosition,verticalPosition])
 
  let tail=snakePositions.pop()
- let horizontalPosition=tail[0]
- let verticalPosition=tail[1]
+ horizontalPosition=tail[0]
+ verticalPosition=tail[1]
  resetCell()
 },1000)
 
