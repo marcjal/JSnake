@@ -106,6 +106,8 @@ let movingDown=false
 let movingLeft=false
 let movingUp=false
 
+let snakePositions=[ [0,0] ] // [row, col]
+
 function setCell() {
  document.getElementById('r'+ verticalPosition+'c'+ horizontalPosition).style['border']='1px solid #ddd'
 }
@@ -117,43 +119,58 @@ function resetCell() {
 function runGame() {
 
 if(movingRight) {
+ let head=snakePositions[0]
+ horizontalPosition=head[0]
+ verticalPosition=head[0]+1
+ snakePositions.unshift([horizontalPosition,verticalPosition])
+ setCell()
+ setTimeout(()=>{
+  let tail=snakePositions.pop()
+  horizontalPosition=tail[0]
+  verticalPosition=tail[1]
+  resetCell()
+  if(snakePositions[0][0]==7) snakePositions[0][0]=-1
+  runGame()
+ },1000)
+}
+
+/*if(movingRight) {
  console.log('moveRight ' + horizontalPosition + '  ' + verticalPosition)
  ++horizontalPosition
  setCell()
-  setTimeout(()=>{
-   resetCell()
-   if(horizontalPosition==7) horizontalPosition=-1
-   runGame()
-  },1000)
+ setTimeout(()=>{
+  resetCell()
+  if(horizontalPosition==7) horizontalPosition=-1
+  runGame()
+ },1000)
 } else if(movingLeft) {
  console.log('moveLeft ' + horizontalPosition + '  ' + verticalPosition)
  if(horizontalPosition==0) horizontalPosition=8
  --horizontalPosition
  setCell()
-  setTimeout(()=>{
-   resetCell()
-   
-   runGame()
-  },1000)
+ setTimeout(()=>{
+  resetCell()
+  runGame()
+ },1000)
 } else if(movingDown) {
  console.log('moveDown ' + horizontalPosition + '  ' + verticalPosition)
  ++verticalPosition
  setCell()
-  setTimeout(()=>{
-   resetCell()
-   if(verticalPosition==7) verticalPosition=-1
-   runGame()
-  },1000)
+ setTimeout(()=>{
+  resetCell()
+  if(verticalPosition==7) verticalPosition=-1
+  runGame()
+ },1000)
 } else if(movingUp) {
  console.log('moveUp ' + horizontalPosition + '  ' + verticalPosition)
-   if(verticalPosition==0) verticalPosition=8
+ if(verticalPosition==0) verticalPosition=8
  --verticalPosition
  setCell()
-  setTimeout(()=>{
-   resetCell()
-   runGame()
-  },1000)
-}
+ setTimeout(()=>{
+  resetCell()
+  runGame()
+ },1000)
+}*/
 
 } // runGame
 
