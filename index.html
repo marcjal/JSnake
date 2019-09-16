@@ -186,7 +186,7 @@ function positionFood() {
  foodPosition[0]=~~(Math.random()*8)
  foodPosition[1]=~~(Math.random()*8)
  if(!snakePositions.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1]))
-  document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='1px solid #fff'
+  document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='0.1vh solid #fff'
  else
    positionFood()
 }
