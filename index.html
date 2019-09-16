@@ -204,20 +204,25 @@ drawInitial()
 runGame()
 positionFood()
 
+let downKeys=['ArrowDown', 'j']
+let upKeys=['ArrowUp', 'k']
+let leftkeys=['ArrowLeft', 'h']
+let rightKeys=['ArrowRight', 'l']
+
 document.onkeydown = key => {
- if(key.code=='ArrowDown' && !movingDown && !movingUp) {
+ if(downKeys.includes(key.code) && !movingDown && !movingUp) {
   movingRight=movingLeft=movingUp=false
   movingDown=true
  }
- if(key.code=='ArrowRight' && !movingRight && !movingLeft) {
+ if(rightKeys.includes(key.code) && !movingRight && !movingLeft) {
   movingRight=true
   movingDown=movingLeft=movingUp=false
  }
- if(key.code=='ArrowLeft' && !movingRight && !movingLeft) {
+ if(leftKeys.includes(key.code) && !movingRight && !movingLeft) {
   movingLeft=true
   movingDown=movingRight=movingUp=false
  }
- if(key.code=='ArrowUp' && !movingDown && !movingUp) {
+ if(upKeys.includes(key.code) && !movingDown && !movingUp) {
   movingUp=true
   movingDown=movingRight=movingLeft=false
  }
