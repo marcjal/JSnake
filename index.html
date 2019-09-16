@@ -21,8 +21,18 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 <body>
 
 <div id="gameArea">
+ 
+ <script>
+ for(let i=0;i<8;i++) {
+  let row='<div class="gameRow">'
+  for(let j=0;j<8;j++)
+   row+=`<div class="gameCol" id="r${i}c${j}"></div>`
+  row+='</div>'
+  document.getElementById('gameArea').innerHTML+=row
+ }
+ </script>
 
-<div class="gameRow">
+<!--<div class="gameRow">
  <div class="gameCol" id="r0c0"></div>
  <div class="gameCol" id="r0c1"></div>
  <div class="gameCol" id="r0c2"></div>
@@ -101,7 +111,7 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
  <div class="gameCol" id="r7c5"></div>
  <div class="gameCol" id="r7c6"></div>
  <div class="gameCol" id="r7c7"></div>
-</div>
+</div>-->
 
 </div>
 
