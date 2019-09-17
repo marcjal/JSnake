@@ -212,26 +212,14 @@ function setDirection([l,r,u,d]) {
 }
 
 document.onkeydown = key => {
- if(downKeys.includes(key.key) && !movingDown && !movingUp) {
-  //movingRight=movingLeft=movingUp=false
-  //movingDown=true
+ if(downKeys.includes(key.key) && !movingDown && !movingUp)
   setDirection([,,,true])
- }
- if(rightKeys.includes(key.key) && !movingRight && !movingLeft) {
-  //movingRight=true
-  //movingDown=movingLeft=movingUp=false
+ else if(rightKeys.includes(key.key) && !movingRight && !movingLeft)
   setDirection([,true,,])
- }
- if(leftKeys.includes(key.key) && !movingRight && !movingLeft) {
-  //movingLeft=true
-  //movingDown=movingRight=movingUp=false
+ else if(leftKeys.includes(key.key) && !movingRight && !movingLeft)
   setDirection([true,,,])
- }
- if(upKeys.includes(key.key) && !movingDown && !movingUp) {
-  //movingUp=true
-  //movingDown=movingRight=movingLeft=false
+ else if(upKeys.includes(key.key) && !movingDown && !movingUp)
   setDirection([,,true,])
- }
 }
 
 $('left').onclick=()=>{
