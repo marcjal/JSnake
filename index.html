@@ -212,14 +212,14 @@ function setDirection([l,r,u,d]) {
 }
 
 document.onkeydown = key => {
- if(downKeys.includes(key.key) && !movingDown && !movingUp)
-  setDirection([,,,true])
+ if(leftKeys.includes(key.key) && !movingRight && !movingLeft)
+  setDirection([true,,,])
  else if(rightKeys.includes(key.key) && !movingRight && !movingLeft)
   setDirection([,true,,])
- else if(leftKeys.includes(key.key) && !movingRight && !movingLeft)
-  setDirection([true,,,])
  else if(upKeys.includes(key.key) && !movingDown && !movingUp)
   setDirection([,,true,])
+ else if(downKeys.includes(key.key) && !movingDown && !movingUp)
+  setDirection([,,,true])
 }
 
 $('left').onclick=()=>{
