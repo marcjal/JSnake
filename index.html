@@ -204,7 +204,7 @@ let upKeys=['ArrowUp', 'k']
 let leftKeys=['ArrowLeft', 'h']
 let rightKeys=['ArrowRight', 'l']
 
-function setDirection(l,r,u,d) {
+function setDirection([l,r,u,d]) {
   movingLeft=!!l
   movingRight=!!r
   movingUp=!!u
@@ -215,22 +215,22 @@ document.onkeydown = key => {
  if(downKeys.includes(key.key) && !movingDown && !movingUp) {
   //movingRight=movingLeft=movingUp=false
   //movingDown=true
-  setDirection(,,,true)
+  setDirection([,,,true])
  }
  if(rightKeys.includes(key.key) && !movingRight && !movingLeft) {
   //movingRight=true
   //movingDown=movingLeft=movingUp=false
-  setDirection(,true,,)
+  setDirection([,true,,])
  }
  if(leftKeys.includes(key.key) && !movingRight && !movingLeft) {
   //movingLeft=true
   //movingDown=movingRight=movingUp=false
-  setDirection(true,,,)
+  setDirection([true,,,])
  }
  if(upKeys.includes(key.key) && !movingDown && !movingUp) {
   //movingUp=true
   //movingDown=movingRight=movingLeft=false
-  setDirection(,,true,)
+  setDirection([,,true,])
  }
 }
 
