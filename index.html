@@ -205,10 +205,7 @@ let leftKeys=['ArrowLeft', 'h']
 let rightKeys=['ArrowRight', 'l']
 
 function setDirection([l,r,u,d]) {
-  movingLeft=!!l
-  movingRight=!!r
-  movingUp=!!u
-  movingDown=!!d
+  [movingLeft,movingRight,movingUp,movingDown]=[!!l,!!r,!!u,!!d]
 }
 
 document.onkeydown = key => {
