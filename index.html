@@ -223,21 +223,18 @@ document.onkeydown = key => {
 }
 
 $('left').onclick=()=>{
-  movingRight=movingDown=movingUp=false
-  movingLeft=true
+  setDirection([true,,,])
 }
 $('right').onclick=()=>{
-  movingDown=movingLeft=movingUp=false
-  movingRight=true
+  setDirection([,true,,])
 }
 $('up').onclick=()=>{
-  movingRight=movingLeft=movingDown=false
-  movingUp=true
+  setDirection([,,true,])
 }
 $('down').onclick=()=>{
-  movingRight=movingLeft=movingUp=false
-  movingDown=true
+  setDirection([,,,true])
 }
+
 $('turnOnColor').onclick=()=>{
   snakeColor='#f00'
   foodColor='#0f0'
