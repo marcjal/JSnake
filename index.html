@@ -88,6 +88,15 @@ function appendInner(elementName,innerHtml) {
 
 <script type="text/javascript">
 
+let movingRight=false
+let movingDown=false
+let movingLeft=false
+let movingUp=false
+
+function setDirection([l,r,u,d]) {
+  [movingLeft,movingRight,movingUp,movingDown]=[!!l,!!r,!!u,!!d]
+}
+
 setInner('score',0)
 setInner('highestScore',0)
 setInner('averageScore',0)
@@ -98,11 +107,6 @@ let foodColor='#eee'
 
 let row=-1
 let column=-1
-
-let movingRight=false
-let movingDown=false
-let movingLeft=false
-let movingUp=false
 
 let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
@@ -167,8 +171,7 @@ if(movingRight) {
   }
   snakePositions=[ [0,1],[0,0] ] // [row, col]
   drawInitial()
-  movingRight=true
-  movingDown=movingLeft=movingUp=false
+  setDirection([,true,,])
  }
  else {
   snakePositions.unshift([row,column])
@@ -212,10 +215,6 @@ let downKeys=['ArrowDown', 'j']
 let upKeys=['ArrowUp', 'k']
 let leftKeys=['ArrowLeft', 'h']
 let rightKeys=['ArrowRight', 'l']
-
-function setDirection([l,r,u,d]) {
-  [movingLeft,movingRight,movingUp,movingDown]=[!!l,!!r,!!u,!!d]
-}
 
 document.onkeydown = key => {
  if(leftKeys.includes(key.key) && !movingRight && !movingLeft)
