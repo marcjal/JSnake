@@ -69,11 +69,21 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 function $(elementName) {
  return document.getElementById(elementName)
 }
+
+function getInner(elementName) {
+ let innerString = document.getElementById(elementName).innerHTML
+ let innerInt = +innerString
+ return Number.isNaN(innerInt) ? innerString : innerInt
+}
+
+function setInner(elementName,innerHtml) {
+ return document.getElementById(elementName).innerHTML = innerHtml
+}
  
- $('score').innerHTML=0
- $('highestScore').innerHTML=0
- $('gamesPlayed').innerHTML=0
- $('averageScore').innerHTML=0
+setInner('score',0)
+setInner('highestScore',0)
+setInner('averageScore',0)
+setInner('gamesPlayed',0)
  
 let snakeColor='#eee'
 let foodColor='#eee'
