@@ -44,6 +44,7 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
   <div id="scoreContainer">
    <h2>Current score: <span id="score"></span></h2>
    <h2>Highest score: <span id="highestScore"></span></h2>
+   <h2>Average score: <span id="averageScore"></span></h2>
    <h2>Games played: <span id="gamesPlayed"></span></h2>
  </div>
 
@@ -100,6 +101,8 @@ function drawInitial() {
  }
 }
 
+let totalScore=0
+
 function runGame() {
 
 setTimeout(()=>{
@@ -132,6 +135,7 @@ if(movingRight) {
   )
   document.getElementById('score').innerHTML=0
   document.getElementById('gamesPlayed').innerHTML=+document.getElementById('gamesPlayed').innerHTML+1
+  document.getElementById('averageScore').innerHTML=Math.round(totalScore/+document.getElementById('gamesPlayed').innerHTML)
   setTimeout(()=>document.getElementById('gameOver').style.display='none',2000)
   for(let i=0;i<snakePositions.length;i++) {
    row=snakePositions[i][0]
@@ -147,6 +151,7 @@ if(movingRight) {
   snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
   document.getElementById('score').innerHTML=+document.getElementById('score').innerHTML+1
+  totalScore++
  positionFood()
 } else {
  let tail=snakePositions.pop()
