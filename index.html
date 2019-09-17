@@ -19,6 +19,25 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
  #gameOver { position: absolute; z-index: 1; display: none; }
 
 </style>
+
+<script>
+
+function $(elementName) {
+ return document.getElementById(elementName)
+}
+
+function getInner(elementName) {
+ let innerString = $(elementName).innerHTML
+ let innerInt = +innerString
+ return Number.isNaN(innerInt) ? innerString : innerInt
+}
+
+function setInner(elementName,innerHtml) {
+ return $(elementName).innerHTML = innerHtml
+}
+
+</script>
+
 </head>
 <body>
 
@@ -65,20 +84,6 @@ body { width:100vh;height:100vh;margin:0;padding:0;}
 
 <script type="text/javascript">
 
-function $(elementName) {
- return document.getElementById(elementName)
-}
-
-function getInner(elementName) {
- let innerString = $(elementName).innerHTML
- let innerInt = +innerString
- return Number.isNaN(innerInt) ? innerString : innerInt
-}
-
-function setInner(elementName,innerHtml) {
- return $(elementName).innerHTML = innerHtml
-}
- 
 setInner('score',0)
 setInner('highestScore',0)
 setInner('averageScore',0)
