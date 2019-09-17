@@ -36,6 +36,10 @@ function setInner(elementName,innerHtml) {
  return $(elementName).innerHTML = innerHtml
 }
 
+function appendInner(elementName,innerHtml) {
+ return $(elementName).innerHTML+=innerHtml
+}
+
 </script>
 
 </head>
@@ -49,7 +53,7 @@ function setInner(elementName,innerHtml) {
   for(let j=0;j<8;j++)
    row+=`<div class="gameCol" id="r${i}c${j}"></div>`
   row+='</div>'
-  document.getElementById('gameArea').innerHTML+=row
+  appendInner('gameArea',row)
  }
  </script>
 
