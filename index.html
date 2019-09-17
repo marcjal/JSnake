@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,13 +70,13 @@ function $(elementName) {
 }
 
 function getInner(elementName) {
- let innerString = document.getElementById(elementName).innerHTML
+ let innerString = $(elementName).innerHTML
  let innerInt = +innerString
  return Number.isNaN(innerInt) ? innerString : innerInt
 }
 
 function setInner(elementName,innerHtml) {
- return document.getElementById(elementName).innerHTML = innerHtml
+ return $(elementName).innerHTML = innerHtml
 }
  
 setInner('score',0)
@@ -99,13 +98,13 @@ let movingUp=false
 let snakePositions=[ [0,1],[0,0] ] // [row, col]
 
 function setCell() {
- document.getElementById('r'+ row+'c'+ column).style['border']='0.1vh solid #ddd'
- document.getElementById('r'+ row+'c'+ column).style['background']=snakeColor
+ $('r'+ row+'c'+ column).style['border']='0.1vh solid #ddd'
+ $('r'+ row+'c'+ column).style['background']=snakeColor
 }
 
 function resetCell() {
- document.getElementById('r'+row+'c'+column).style['border']='0.1vh solid #eee'
- document.getElementById('r'+ row+'c'+ column).style['background']='#eee'
+ $('r'+row+'c'+column).style['border']='0.1vh solid #eee'
+ $('r'+ row+'c'+ column).style['background']='#eee'
 }
 
 function drawInitial() {
@@ -144,14 +143,14 @@ if(movingRight) {
 
  setCell()
  if(snakePositions.some(e=>e[0]==row&&e[1]==column)) {
-  document.getElementById('gameOver').style.display='block'
-  document.getElementById('highestScore').innerHTML=Math.max(
+  $('gameOver').style.display='block'
+  setInner('highestScore',Math.max(
    document.getElementById('highestScore').innerHTML,document.getElementById('score').innerHTML
-  )
-  document.getElementById('score').innerHTML=0
-  document.getElementById('gamesPlayed').innerHTML=+document.getElementById('gamesPlayed').innerHTML+1
-  document.getElementById('averageScore').innerHTML=Math.round(totalScore/+document.getElementById('gamesPlayed').innerHTML)
-  setTimeout(()=>document.getElementById('gameOver').style.display='none',2000)
+  ))
+  setInner('score',0)
+  setInner('gamesPlayed',getInner('gamesPlayed')+1)
+  setInner('averageScore',Math.round(totalScore/getInner('gamesPlayed')))
+  setTimeout(()=>$('gameOver').style.display='none',2000)
   for(let i=0;i<snakePositions.length;i++) {
    row=snakePositions[i][0]
    column=snakePositions[i][1]
@@ -165,7 +164,7 @@ if(movingRight) {
  else {
   snakePositions.unshift([row,column])
 if(head.toString()==foodPosition.toString()) {
-  document.getElementById('score').innerHTML=+document.getElementById('score').innerHTML+1
+ setInner('score',getInner('score')+1)
   totalScore++
  positionFood()
 } else {
@@ -188,8 +187,8 @@ function positionFood() {
  foodPosition[0]=~~(Math.random()*8)
  foodPosition[1]=~~(Math.random()*8)
  if(!snakePositions.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1])) {
-  document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='0.1vh solid #fff'
-  document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['background']=foodColor
+  $('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='0.1vh solid #fff'
+  $('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['background']=foodColor
  } else
    positionFood()
 }
@@ -232,23 +231,23 @@ document.onkeydown = key => {
  }
 }
 
-document.getElementById('left').onclick=()=>{
+$('left').onclick=()=>{
   movingRight=movingDown=movingUp=false
   movingLeft=true
 }
-document.getElementById('right').onclick=()=>{
+$('right').onclick=()=>{
   movingDown=movingLeft=movingUp=false
   movingRight=true
 }
-document.getElementById('up').onclick=()=>{
+$('up').onclick=()=>{
   movingRight=movingLeft=movingDown=false
   movingUp=true
 }
-document.getElementById('down').onclick=()=>{
+$('down').onclick=()=>{
   movingRight=movingLeft=movingUp=false
   movingDown=true
 }
-document.getElementById('turnOnColor').onclick=()=>{
+$('turnOnColor').onclick=()=>{
   snakeColor='#f00'
   foodColor='#0f0'
   document.getElementById('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['background']=foodColor
