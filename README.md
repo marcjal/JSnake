@@ -2,7 +2,7 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/ilovesourcecode/JSnake?color=green) ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/ilovesourcecode/JSnake) ![GitHub contributors](https://img.shields.io/github/contributors-anon/ilovesourcecode/JSnake)
 
 Happy Hacktoberfest! Hacktoberfest is back :fire: 
-HacktoberProfile is a list of profiles of Hacktoberfest 2019 participants.
+JSnake is a snake game written in JavaScript, HTML and CSS.
 
 Link to webpage: [https://ilovesourcecode.github.io/JSnake/](https://ilovesourcecode.github.io/JSnake/)
 
