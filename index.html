@@ -1,292 +1,311 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>JSnake 22:22</title>
-<style type="text/css">
+  <head>
+    <title>JSnake 22:22</title>
+    <style type="text/css">
+      .gameRow {
+        height: 10.2vh;
+        width: 81.6vh;
+      }
+      /*body { width:100vh;height:100vh;margin:0;padding:0;}*/
+      #gameArea {
+        width: 81.6vh;
+        height: 81.6vh;
+        float: left;
+      }
+      .gameCol {
+        height: 10vh;
+        float: left;
+        width: 10vh;
+        background-color: #485922;
+        border: 0.1vh solid #485922;
+      }
 
-.gameRow { height: 10.2vh;width:81.6vh; }
-/*body { width:100vh;height:100vh;margin:0;padding:0;}*/
-#gameArea { width:81.6vh;height:81.6vh; float: left; }
-.gameCol { height: 10.0vh; float: left; width: 10.0vh; background-color: #eee; border: 0.1vh solid #eee; }
+      #gameButtons {
+        width: 15vh;
+        height: 15vh;
+      }
 
-#gameButtons {width:15vh;height:15vh;}
+      #topContainer,
+      #bottomContainer,
+      #middleContainer {
+        text-align: center;
+      }
+      /*#right,*/
+      #gameButtons {
+        float: left;
+      }
 
-#topContainer, #bottomContainer, #middleContainer {text-align:center;}
-/*#right,*/ #gameButtons {float:left}
- 
- #turnOnColor { background: #f00; }
- 
- #gameOver { position: absolute; z-index: 1; display: none; }
+      #turnOnColor {
+        background: #b4bf5e;
+      }
 
-  #scoreContainer {
-    background-color: rgb(248, 204, 204);
-    text-align: left;
-    padding-bottom: 5px;
-    padding-top: 0px;
+      #gameOver {
+        position: absolute;
+        z-index: 1;
+        display: none;
+      }
 
-}
+      #scoreContainer {
+        padding-bottom: 5px;
+        padding-top: 0px;
+      }
 
-body {
-    background-color: rgb(248, 204, 204);
-}
+      body {
+        background-color: #242614;
+      }
 
-#gameArea {
-    background-color: white;
-    border: 2px dotted black;
-    margin: 5px;
-}
+      #gameArea {
+        border: 1px solid lightcyan;
+        margin: 0 auto;
+      }
 
-#title {
-    text-decoration: underline;
-    text-align: center;
-    font-weight: bold;
-    font-family: Helvetica, auto;   
-}
-button{
-  background: #fff;
-  border: 2px solid #000;
-  color:#000;
-  width: 30px;
-  height: 30px;
-  margin-top: 5px;
-  transition: 0.3s;
-}
+      #title {
+        text-decoration: underline;
+        text-align: center;
+        font-weight: bold;
+        font-family: Helvetica, auto;
+      }
+      button {
+        background: #fff;
+        border: 2px solid #000;
+        color: #000;
+        width: 30px;
+        height: 30px;
+        margin-top: 5px;
+        transition: 0.3s;
+      }
 
-button:hover{
-  background-color: #000;
-  color:#fff;
-  transition: 0.3s;
-}
-</style>
+      button:hover {
+        background-color: #000;
+        color: #fff;
+        transition: 0.3s;
+      }
+    </style>
 
-<script>
+    <script>
+      function $(elementName) {
+        return document.getElementById(elementName);
+      }
 
-function $(elementName) {
- return document.getElementById(elementName)
-}
+      function getInner(elementName) {
+        let innerString = $(elementName).innerHTML;
+        let innerInt = +innerString;
+        return Number.isNaN(innerInt) ? innerString : innerInt;
+      }
 
-function getInner(elementName) {
- let innerString = $(elementName).innerHTML
- let innerInt = +innerString
- return Number.isNaN(innerInt) ? innerString : innerInt
-}
+      function setInner(elementName, innerHtml) {
+        return ($(elementName).innerHTML = innerHtml);
+      }
 
-function setInner(elementName,innerHtml) {
- return $(elementName).innerHTML = innerHtml
-}
+      function appendInner(elementName, innerHtml) {
+        return ($(elementName).innerHTML += innerHtml);
+      }
+    </script>
+  </head>
+  <body>
+    <h1 style="text-align: center;">Snake Game</h1>
+    <div id="gameArea">
+      <script>
+        for (let i = 0; i < 8; i++) {
+          let row = '<div class="gameRow">';
+          for (let j = 0; j < 8; j++)
+            row += `<div class="gameCol" id="r${i}c${j}"></div>`;
+          row += "</div>";
+          appendInner("gameArea", row);
+        }
+      </script>
+    </div>
 
-function appendInner(elementName,innerHtml) {
- return $(elementName).innerHTML+=innerHtml
-}
+    <div id="gameOver">
+      <h1>Game Over</h1>
+    </div>
 
-</script>
+    <div id="scoreContainer">
+      <h2>Current score: <span id="score"></span></h2>
+      <h2>Highest score: <span id="highestScore"></span></h2>
+      <h2>Average score: <span id="averageScore"></span></h2>
+      <h2>Games played: <span id="gamesPlayed"></span></h2>
+    </div>
 
-</head>
-<body>
+    <div id="gameButtons">
+      <div id="topContainer"><button id="up">^</button></div>
 
-  <h1 style="text-align: center;">Snake Game</h1>
-<div id="gameArea">
- 
- <script>
- for(let i=0;i<8;i++) {
-  let row='<div class="gameRow">'
-  for(let j=0;j<8;j++)
-   row+=`<div class="gameCol" id="r${i}c${j}"></div>`
-  row+='</div>'
-  appendInner('gameArea',row)
- }
- </script>
+      <div id="middleContainer">
+        <button id="left">&lt;</button>
+        <button id="turnOnColor">#</button>
+        <button id="right">&gt;</button>
+      </div>
 
-</div>
- 
- <div id="gameOver">
-  <h1>Game over</h1>
- </div>
- 
-  <div id="scoreContainer">
-   <h2>Current score: <span id="score"></span></h2>
-   <h2>Highest score: <span id="highestScore"></span></h2>
-   <h2>Average score: <span id="averageScore"></span></h2>
-   <h2>Games played: <span id="gamesPlayed"></span></h2>
- </div>
+      <div id="bottomContainer">
+        <button id="down">v</button>
+      </div>
+    </div>
 
-<div id="gameButtons">
+    <script type="text/javascript">
+      let movingRight = false;
+      let movingDown = false;
+      let movingLeft = false;
+      let movingUp = false;
 
-<div id="topContainer"><button id='up'>^</button></div>
+      function setDirection([l, r, u, d]) {
+        [movingLeft, movingRight, movingUp, movingDown] = [!!l, !!r, !!u, !!d];
+      }
 
-<div id="middleContainer">
-<button id='left'>&lt;</button>
-<button id='turnOnColor'>#</button>
-<button id='right'>&gt;</button>
-</div>
+      setInner("score", 0);
+      setInner("highestScore", 0);
+      setInner("averageScore", 0);
+      setInner("gamesPlayed", 0);
 
-<div id="bottomContainer">
-<button id='down'>v</button>
-</div>
+      let snakeColor = "#485922";
+      let foodColor = "#485922";
 
-</div>
+      let row = -1;
+      let column = -1;
 
-<script type="text/javascript">
+      let snakePositions = [[0, 1], [0, 0]]; // [row, col]
 
-let movingRight=false
-let movingDown=false
-let movingLeft=false
-let movingUp=false
+      function setCell() {
+        $("r" + row + "c" + column).style["background"] = snakeColor;
+      }
 
-function setDirection([l,r,u,d]) {
-  [movingLeft,movingRight,movingUp,movingDown]=[!!l,!!r,!!u,!!d]
-}
+      function resetCell() {
+        $("r" + row + "c" + column).style["background"] = "#485922";
+      }
 
-setInner('score',0)
-setInner('highestScore',0)
-setInner('averageScore',0)
-setInner('gamesPlayed',0)
- 
-let snakeColor='#eee'
-let foodColor='#eee'
+      function drawInitial() {
+        for (let i = 0; i < snakePositions.length; i++) {
+          row = snakePositions[i][0];
+          column = snakePositions[i][1];
+          setCell();
+        }
+      }
 
-let row=-1
-let column=-1
+      let totalScore = 0;
 
-let snakePositions=[ [0,1],[0,0] ] // [row, col]
+      function runGame() {
+        setTimeout(() => {
+          let head = snakePositions[0];
 
-function setCell() {
- $('r'+ row+'c'+ column).style['border']='0.1vh solid #ddd'
- $('r'+ row+'c'+ column).style['background']=snakeColor
-}
+          if (movingRight) {
+            column = head[1] + 1;
+            row = head[0];
+            if (column > 7) column = 0;
+          } else if (movingDown) {
+            column = head[1];
+            row = head[0] + 1;
+            if (row > 7) row = 0;
+          } else if (movingLeft) {
+            column = head[1] - 1;
+            row = head[0];
+            if (column < 0) column = 7;
+          } else if (movingUp) {
+            column = head[1];
+            row = head[0] - 1;
+            if (row < 0) row = 7;
+          }
 
-function resetCell() {
- $('r'+row+'c'+column).style['border']='0.1vh solid #eee'
- $('r'+ row+'c'+ column).style['background']='#eee'
-}
+          setCell();
+          if (snakePositions.some(e => e[0] == row && e[1] == column)) {
+            $("gameOver").style.display = "block";
+            setInner(
+              "highestScore",
+              Math.max(
+                document.getElementById("highestScore").innerHTML,
+                document.getElementById("score").innerHTML
+              )
+            );
+            setInner("score", 0);
+            setInner("gamesPlayed", getInner("gamesPlayed") + 1);
+            setInner(
+              "averageScore",
+              Math.round(totalScore / getInner("gamesPlayed"))
+            );
+            setTimeout(() => ($("gameOver").style.display = "none"), 2000);
+            for (let i = 0; i < snakePositions.length; i++) {
+              row = snakePositions[i][0];
+              column = snakePositions[i][1];
+              resetCell();
+            }
+            snakePositions = [[0, 1], [0, 0]]; // [row, col]
+            drawInitial();
+            setDirection([, true, ,]);
+          } else {
+            snakePositions.unshift([row, column]);
+            if (head.toString() == foodPosition.toString()) {
+              setInner("score", getInner("score") + 1);
+              totalScore++;
+              positionFood();
+            } else {
+              let tail = snakePositions.pop();
+              row = tail[0];
+              column = tail[1];
+              resetCell();
+            }
+          }
 
-function drawInitial() {
- for(let i=0; i<snakePositions.length;i++) {
-  row=snakePositions[i][0]
-  column=snakePositions[i][1]
-  setCell()
- }
-}
+          runGame();
+        }, 1000);
+      } // runGame
 
-let totalScore=0
+      let foodPosition = [];
 
-function runGame() {
+      function positionFood() {
+        foodPosition[0] = ~~(Math.random() * 8);
+        foodPosition[1] = ~~(Math.random() * 8);
+        if (
+          !snakePositions.some(
+            e => e[0] == foodPosition[0] || e[1] == foodPosition[1]
+          )
+        ) {
+          $("r" + foodPosition[0] + "c" + foodPosition[1]).style[
+            "background"
+          ] = foodColor;
+        } else positionFood();
+      }
 
-setTimeout(()=>{
+      row = 0;
+      movingRight = true;
+      drawInitial();
+      positionFood();
+      runGame();
 
-let head=snakePositions[0]
+      let downKeys = ["ArrowDown", "j"];
+      let upKeys = ["ArrowUp", "k"];
+      let leftKeys = ["ArrowLeft", "h"];
+      let rightKeys = ["ArrowRight", "l"];
 
-if(movingRight) {
- column=head[1]+1
- row=head[0]
- if(column>7) column=0
-} else if(movingDown) {
- column=head[1]
- row=head[0]+1
- if(row>7) row=0 
-} else if(movingLeft) {
- column=head[1]-1
- row=head[0]
- if(column<0) column=7
-} else if(movingUp) {
- column=head[1]
- row=head[0]-1
- if(row<0) row=7
-}
+      document.onkeydown = key => {
+        if (leftKeys.includes(key.key) && !movingRight && !movingLeft)
+          setDirection([true, , ,]);
+        else if (rightKeys.includes(key.key) && !movingRight && !movingLeft)
+          setDirection([, true, ,]);
+        else if (upKeys.includes(key.key) && !movingDown && !movingUp)
+          setDirection([, , true]);
+        else if (downKeys.includes(key.key) && !movingDown && !movingUp)
+          setDirection([, , , true]);
+      };
 
- setCell()
- if(snakePositions.some(e=>e[0]==row&&e[1]==column)) {
-  $('gameOver').style.display='block'
-  setInner('highestScore',Math.max(
-   document.getElementById('highestScore').innerHTML,document.getElementById('score').innerHTML
-  ))
-  setInner('score',0)
-  setInner('gamesPlayed',getInner('gamesPlayed')+1)
-  setInner('averageScore',Math.round(totalScore/getInner('gamesPlayed')))
-  setTimeout(()=>$('gameOver').style.display='none',2000)
-  for(let i=0;i<snakePositions.length;i++) {
-   row=snakePositions[i][0]
-   column=snakePositions[i][1]
-   resetCell()
-  }
-  snakePositions=[ [0,1],[0,0] ] // [row, col]
-  drawInitial()
-  setDirection([,true,,])
- }
- else {
-  snakePositions.unshift([row,column])
-if(head.toString()==foodPosition.toString()) {
- setInner('score',getInner('score')+1)
-  totalScore++
- positionFood()
-} else {
- let tail=snakePositions.pop()
- row=tail[0]
- column=tail[1]
- resetCell()
-}
-}
+      $("left").onclick = () => {
+        setDirection([true, , ,]);
+      };
+      $("right").onclick = () => {
+        setDirection([, true, ,]);
+      };
+      $("up").onclick = () => {
+        setDirection([, , true]);
+      };
+      $("down").onclick = () => {
+        setDirection([, , , true]);
+      };
 
-runGame()
-
-},1000)
-
-} // runGame
-
-let foodPosition=[]
-
-function positionFood() {
- foodPosition[0]=~~(Math.random()*8)
- foodPosition[1]=~~(Math.random()*8)
- if(!snakePositions.some(e=>e[0]==foodPosition[0]||e[1]==foodPosition[1])) {
-  $('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['border']='0.1vh solid #fff'
-  $('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['background']=foodColor
- } else
-   positionFood()
-}
-
-row=0
-movingRight=true
-drawInitial()
-positionFood()
-runGame()
-
-let downKeys=['ArrowDown', 'j']
-let upKeys=['ArrowUp', 'k']
-let leftKeys=['ArrowLeft', 'h']
-let rightKeys=['ArrowRight', 'l']
-
-document.onkeydown = key => {
- if(leftKeys.includes(key.key) && !movingRight && !movingLeft)
-  setDirection([true,,,])
- else if(rightKeys.includes(key.key) && !movingRight && !movingLeft)
-  setDirection([,true,,])
- else if(upKeys.includes(key.key) && !movingDown && !movingUp)
-  setDirection([,,true,])
- else if(downKeys.includes(key.key) && !movingDown && !movingUp)
-  setDirection([,,,true])
-}
-
-$('left').onclick=()=>{
-  setDirection([true,,,])
-}
-$('right').onclick=()=>{
-  setDirection([,true,,])
-}
-$('up').onclick=()=>{
-  setDirection([,,true,])
-}
-$('down').onclick=()=>{
-  setDirection([,,,true])
-}
-
-$('turnOnColor').onclick=()=>{
-  snakeColor='#f00'
-  foodColor='#0f0'
-  $('r'+ foodPosition[0]+'c'+ foodPosition[1]).style['background']=foodColor
-}
-
-</script>
-
-</body>
+      $("turnOnColor").onclick = () => {
+        snakeColor = "#B4BF5E";
+        foodColor = "#2E3640";
+        $("r" + foodPosition[0] + "c" + foodPosition[1]).style[
+          "background"
+        ] = foodColor;
+      };
+    </script>
+  </body>
 </html>
