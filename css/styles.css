@@ -1,0 +1,80 @@
+.gameRow {
+  height: 10.2vh;
+  width: 81.6vh;
+}
+
+#gameArea {
+  width: 81.6vh;
+  height: 81.6vh;
+  float: left;
+}
+
+.gameCol {
+  height: 10vh;
+  float: left;
+  width: 10vh;
+  background-color: #485922;
+  border: 0.1vh solid #485922;
+}
+
+#gameButtons {
+  width: 15vh;
+  height: 15vh;
+}
+
+#topContainer,
+#bottomContainer,
+#middleContainer {
+  text-align: center;
+}
+
+#gameButtons {
+  float: left;
+}
+
+#turnOnColor {
+  background: #b4bf5e;
+}
+
+#gameOver {
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+
+#scoreContainer {
+  padding-bottom: 5px;
+  padding-top: 0px;
+}
+
+body {
+  background-color: #242614;
+}
+
+#gameArea {
+  border: 1px solid lightcyan;
+  margin: 0 auto;
+}
+
+#title {
+  text-decoration: underline;
+  text-align: center;
+  font-weight: bold;
+  font-family: Helvetica, auto;
+}
+
+button {
+  background: #fff;
+  border: 2px solid #000;
+  color: #000;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #000;
+  color: #fff;
+  transition: 0.3s;
+}
